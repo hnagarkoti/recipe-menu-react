@@ -6,7 +6,7 @@ import {
   Grid,
   Col,
   Row,
-  Image
+  Image,
  } from 'react-bootstrap/dist/react-bootstrap.js';
 
  import PopularPost from '../Posts/PopularPost';
@@ -42,6 +42,7 @@ class BlogRow extends Component {
             </Col>
           <PopularPost />
         </Row>
+
       </Grid>
     )
   }

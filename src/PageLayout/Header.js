@@ -21,10 +21,10 @@ class Header extends Component{
             <Navbar.Collapse>
               <Nav>
                 <NavItem eventKey={1}><Link to="/about">About Us</Link></NavItem>
-                <NavItem eventKey={1}><Link to="/blog">Create Blog</Link></NavItem>
+                <NavItem eventKey={1}><Link to="/blogs">Create Blog</Link></NavItem>
               </Nav>
               <Nav pullRight>
-                <NavItem eventKey={1} ><Link to="">Popular Posts</Link></NavItem>
+                <NavItem eventKey={1} ><Link to="/popular/posts">Popular Posts</Link></NavItem>
               </Nav>
             </Navbar.Collapse>
           </Navbar>

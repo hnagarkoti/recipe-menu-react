@@ -9,6 +9,7 @@ import Home from './Home';
 import About from './About';
 import ReadBlog from './Blogs/ReadBlog';
 import CreateBlog from './Blogs/CreateBlog';
+import PopularPostList from './Posts/PopularPostList';
 
 
 class App extends Component {
@@ -19,7 +20,8 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route path="/about" component={About}/>
             <Route path="/blog/:id" component={ReadBlog}/>
-            <Route path="/blog" component={CreateBlog}/>
+            <Route path="/blogs" component={CreateBlog}/>
+            <Route path="/popular/posts" component={PopularPostList} />
           </div>
         </Router>
       )

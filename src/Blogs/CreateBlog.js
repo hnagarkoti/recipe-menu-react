@@ -26,9 +26,12 @@ class CreateBlog extends Component {
   constructor() {
     super();
     this.state = {
-      title:''
+      title:'',
+      description: '',
+      image: null
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
   }
   getValidationState() {
     const length = this.state.title.length;
@@ -49,10 +52,12 @@ class CreateBlog extends Component {
   }
   uploadImage(files){
       var that = this;
+      var files = files;
       // console.log('image files:-- ',files[0].preview);
-      let imageUrl = config.host + config.middleware + '/images';
+      let imageUrl = config.host + config.middleware + '/image';
       var form = new FormData();
-      form.append("file", files[0]);
+      form.append("avatar", files[0]);
+      console.log('form:- ', form, imageUrl, 'files:- ',files[0]);
       $.ajax({
            url: imageUrl,
            type: 'POST',
@@ -64,9 +69,6 @@ class CreateBlog extends Component {
                if (evt.lengthComputable) {
                  var percentComplete = evt.loaded / evt.total;
                  percentComplete = parseInt(percentComplete * 100);
-                 that.setState({
-                   imgProgressBar: percentComplete
-                 });
                  if (percentComplete === 100) {
                  }
                }
@@ -76,13 +78,55 @@ class CreateBlog extends Component {
            processData: false,
            contentType: false,
            success: function(data){
-             console.log('sucees iamg upload:- ',data);
+             console.log('sucees iamg upload:- ',data.data.fullPath);
+             that.setState({
+               image: data.data.fullPath
+             });
            },
            error: function(err){
              console.log('error while image upload:- ',err);
            }
          });
     }
+  addBlog(){
+    var that = this;
+    var obj = {};
+    obj = {
+      "title": this.state.title,
+      "description": this.state.description,
+      "image": this.state.image
+    }
+    var url = config.host + config.middleware + '/blogs';
+    var data = new FormData();
+    data.append( "json", JSON.stringify( obj ) );
+    fetch(url, {
+      method: 'post',
+      body: JSON.stringify(obj),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+    }).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      if(data.success){
+        that.setState({
+          title: '',
+          description: '',
+          image: null
+        });
+        alert('Blog added sucessfully');
+      } else {
+        console.log('Technical Error while adding Blog',data);
+      }
+    })
+    .catch(function(err){
+      console.log('Technical Error while adding Blog');
+    })
+  }
+  handleDescriptionChange(e){
+     this.setState( { description: e.target.value} );
+  }
   render(){
     return(
       <div>
@@ -107,7 +151,7 @@ class CreateBlog extends Component {
                 />
                 <FormGroup controlId="formControlsTextarea">
                   <ControlLabel>Blog Description</ControlLabel>
-                  <FormControl componentClass="textarea" placeholder="textarea" />
+                  <FormControl componentClass="textarea" placeholder="Blog Description" value={this.state.description} onChange={this.handleDescriptionChange}/>
                 </FormGroup>
 
                 <Dropzone onDrop={this.onDrop.bind(this)}>
@@ -118,7 +162,7 @@ class CreateBlog extends Component {
                 <HelpBlock>Validation is based on string length.</HelpBlock>
               </FormGroup>
               <ButtonToolbar>
-                <Button bsStyle="primary">Add Blog</Button>
+                <Button bsStyle="primary" onClick={this.addBlog.bind(this)}>Add Blog</Button>
                 <Button bsStyle="danger"><Link to="/">Cancel</Link></Button>
               </ButtonToolbar>
             </form>
