@@ -6,6 +6,7 @@ It needs two things `yarn` and `create-react-app`
 
 Run below mentioned commands
 
+* To run this project your system should have `npm` module as global.
 * `npm install -g create-react-app` is a global command-line utility that you use to create new projects.
 * `npm install yarn -g` is npm package manager used for caching the modules/dependencies.
 * git clone `https://github.com/hnagarkoti/reactJsBootstrapUIBlogPage.git`
