@@ -22,7 +22,7 @@ import Footer from '../PageLayout/Footer';
 import config from '../config';
 import $ from 'jquery'
 
-class CreateBlog extends Component {
+class CreateRecipe extends Component {
   constructor() {
     super();
     this.state = {
@@ -88,7 +88,7 @@ class CreateBlog extends Component {
            }
          });
     }
-  addBlog(){
+  addRecipe(){
     var that = this;
     var obj = {};
     obj = {
@@ -96,7 +96,7 @@ class CreateBlog extends Component {
       "description": this.state.description,
       "image": this.state.image
     }
-    var url = config.host + config.middleware + '/blogs';
+    var url = config.host + config.middleware + '/recipe';
     var data = new FormData();
     data.append( "json", JSON.stringify( obj ) );
     fetch(url, {
@@ -115,13 +115,13 @@ class CreateBlog extends Component {
           description: '',
           image: null
         });
-        alert('Blog added sucessfully');
+        alert('Recipe added sucessfully');
       } else {
-        console.log('Technical Error while adding Blog',data);
+        console.log('Technical Error while adding Recipe',data);
       }
     })
     .catch(function(err){
-      console.log('Technical Error while adding Blog');
+      console.log('Technical Error while adding Recipe');
     })
   }
   handleDescriptionChange(e){
@@ -142,16 +142,16 @@ class CreateBlog extends Component {
                 controlId="formBasicText"
                 validationState={this.getValidationState()}
               >
-                <ControlLabel>Create new blog </ControlLabel>
+                <ControlLabel>Create new recipe </ControlLabel>
                 <FormControl
                   type="text"
                   value={this.state.title}
-                  placeholder="Enter Blog Title"
+                  placeholder="Enter Recipe Title"
                   onChange={this.handleChange}
                 />
                 <FormGroup controlId="formControlsTextarea">
-                  <ControlLabel>Blog Description</ControlLabel>
-                  <FormControl componentClass="textarea" placeholder="Blog Description" value={this.state.description} onChange={this.handleDescriptionChange}/>
+                  <ControlLabel>Recipe Description</ControlLabel>
+                  <FormControl componentClass="textarea" placeholder="Recipe Description" value={this.state.description} onChange={this.handleDescriptionChange}/>
                 </FormGroup>
 
                 <Dropzone onDrop={this.onDrop.bind(this)}>
@@ -162,7 +162,7 @@ class CreateBlog extends Component {
                 <HelpBlock>Validation is based on string length.</HelpBlock>
               </FormGroup>
               <ButtonToolbar>
-                <Button bsStyle="primary" onClick={this.addBlog.bind(this)}>Add Blog</Button>
+                <Button bsStyle="primary" onClick={this.addRecipe.bind(this)}>Add Recipe</Button>
                 <Button bsStyle="danger"><Link to="/">Cancel</Link></Button>
               </ButtonToolbar>
             </form>
@@ -179,4 +179,4 @@ class CreateBlog extends Component {
   }
 }
 
-export default CreateBlog;
+export default CreateRecipe;

@@ -16,13 +16,14 @@ import Footer from '../PageLayout/Footer';
 
 import config from '../config';
 
-class ReadBlog extends Component {
+class ReadRecipe extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentPageId: props.match.params.id,
       blogContent: []
     }
+    console.log('ddd',props.match.params.id);
   }
   componentDidMount(){
     var that = this;
@@ -44,7 +45,7 @@ class ReadBlog extends Component {
   }
   getBlogContent(){
     var that = this;
-    return fetch( config.host + config.middleware + '/blogs/' + that.state.currentPageId, {
+    return fetch( config.host + config.middleware + '/recipe/' + that.state.currentPageId, {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -59,7 +60,7 @@ class ReadBlog extends Component {
           <Header />
         <Grid>
             <Row className="show-grid">
-            <PageHeader>Blog Detail</PageHeader>
+            <PageHeader>Recipe Detail</PageHeader>
               <Col xs={6} md={4}><code></code></Col>
               <Col xs={6} md={4}>
                 <Well bsSize="small"> {that.state.blogContent[0].title} </Well>
@@ -90,4 +91,4 @@ class ReadBlog extends Component {
 
 
 
-export default ReadBlog;
+export default ReadRecipe;

@@ -35,7 +35,7 @@ class PopularPost extends Component {
     })
   }
   getPopularPosts(){
-    return fetch( config.host + config.middleware + '/popular/posts', {
+    return fetch( config.host + config.middleware + '/popular/recipe', {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -49,7 +49,7 @@ class PopularPost extends Component {
         <Col xs={6} md={4}>
           <code>
             <div>
-              <h3 style={{color: 'blue'}}>Popular Posts</h3>
+              <h3 style={{color: 'blue'}}>Popular Recipes</h3>
               <div>
                 {
                   that.state.popularPostList.map( function(val, index, arr){
@@ -63,7 +63,7 @@ class PopularPost extends Component {
                           <article>
                             <p>{that.state.popularPostList[index].description ? that.state.popularPostList[index].description.substring(0,180) : 'Not Defined'}</p>
                           </article>
-                          <Link to={'/blog/' + that.state.popularPostList[index]._id}> Read More </Link>
+                          <Link to={'/recipe/' + that.state.popularPostList[index]._id}> Read More </Link>
                       </div>
                     )
                   })

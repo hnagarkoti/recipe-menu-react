@@ -20,15 +20,14 @@ class Footer extends Component {
              <Image src="http://localhost:8080/Blog_Map.jpg" responsive />
            </code></Col>
            <Col xs={6} md={4}><code>
-             <h3>Quick Links</h3>
+             <h3>Some Important Links</h3>
                <ListGroup>
                 <ListGroupItem href="#link1">Existing Members? Login </ListGroupItem>
-                <ListGroupItem href="#link2">Blogs</ListGroupItem>
-                <ListGroupItem href="#link2">Webinars</ListGroupItem>
+                <ListGroupItem href="#link2">Recipe</ListGroupItem>
               </ListGroup>
            </code></Col>
            <Col xsHidden md={4}><code>
-             <h3>Download Free E-Book</h3>
+             <h3> Free Delivery available</h3>
            </code></Col>
          </Row>
          <footer>Copyright &copy; Hemant Nagarkoti</footer>

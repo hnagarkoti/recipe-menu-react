@@ -5,7 +5,7 @@ import config from './config.js';
 import Header from './PageLayout/Header';
 import Footer from './PageLayout/Footer';
 
-import BlogRow from './Blogs/BlogRow';
+import RecipeRow from './Recipe/RecipeRow';
 
 import {
   Pagination
@@ -15,8 +15,8 @@ class Home extends Component{
   constructor(){
     super();
     this.state = {
-      blogList: [],
-      blogListArr:[],
+      recipeList: [],
+      recipeListArr:[],
       activePage:1,
       maxButtons: 1
     }
@@ -25,11 +25,11 @@ class Home extends Component{
   handleSelect(eventKey) {
     var that = this;
     var no_of_items = eventKey*3;
-    var sliced_arr = this.state.blogListArr;
+    var sliced_arr = this.state.recipeListArr;
     sliced_arr = sliced_arr.slice(0, no_of_items);
     this.setState({
       activePage: eventKey,
-      blogList: sliced_arr
+      recipeList: sliced_arr
     });
 
   }
@@ -46,8 +46,8 @@ class Home extends Component{
           // }
           var data = json.data.slice(0,3);
             that.setState({
-              blogList: data,
-              blogListArr: json.data,
+              recipeList: data,
+              recipeListArr: json.data,
               maxButtons: len
             })
         });
@@ -58,7 +58,7 @@ class Home extends Component{
     })
   }
   getBlogs(){
-    return fetch( config.host + config.middleware + '/blogs', {
+    return fetch( config.host + config.middleware + '/recipe', {
         // mode:'no-cors',
         method: 'GET',
         headers: {
@@ -68,7 +68,7 @@ class Home extends Component{
   }
   render(){
     var that = this;
-    if(that.state.blogList.length){
+    if(that.state.recipeList.length){
       return(
         <div >
           <div >
@@ -78,7 +78,7 @@ class Home extends Component{
 
 
           {/* Rendering Rows for blogs based upon for loop as written above*/}
-           <BlogRow items={that.state.blogList}/>
+           <RecipeRow items={that.state.recipeList}/>
           {/* Rendering Rows for blogs based upon for loop as written above*/}
 
 

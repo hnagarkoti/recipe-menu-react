@@ -31,7 +31,7 @@ class PopularPostList extends Component {
     })
   }
   getPopularPosts(){
-    return fetch( config.host + config.middleware + '/popular/posts', {
+    return fetch( config.host + config.middleware + '/popular/recipe', {
         method: 'GET',
         headers: {
           Accept: 'application/json',

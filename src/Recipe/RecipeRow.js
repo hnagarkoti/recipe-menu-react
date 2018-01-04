@@ -11,7 +11,7 @@ import {
 
  import PopularPost from '../Posts/PopularPost';
 
-class BlogRow extends Component {
+class RecipeRow extends Component {
   render(){
     var that = this;
     return(
@@ -30,7 +30,7 @@ class BlogRow extends Component {
                       <div>
                         <article>
                           <p>{ item.description ? item.description.substring(0,200) : 'Description Not Available' }</p>
-                          <Link to={'/blog/' + item._id}> Read More </Link>
+                          <Link to={'/recipe/' + item._id}> Read More </Link>
                         </article>
                       </div>
                   </div>
@@ -48,4 +48,4 @@ class BlogRow extends Component {
   }
 }
 
-export default BlogRow;
+export default RecipeRow;

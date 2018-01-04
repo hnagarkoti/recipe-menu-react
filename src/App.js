@@ -7,8 +7,8 @@ import {
 
 import Home from './Home';
 import About from './About';
-import ReadBlog from './Blogs/ReadBlog';
-import CreateBlog from './Blogs/CreateBlog';
+import ReadRecipe from './Recipe/ReadRecipe';
+import CreateRecipe from './Recipe/CreateRecipe';
 import PopularPostList from './Posts/PopularPostList';
 
 
@@ -19,9 +19,9 @@ class App extends Component {
           <div>
             <Route exact path="/" component={Home}/>
             <Route path="/about" component={About}/>
-            <Route path="/blog/:id" component={ReadBlog}/>
-            <Route path="/blogs" component={CreateBlog}/>
-            <Route path="/popular/posts" component={PopularPostList} />
+            <Route path="/recipe/:id" component={ReadRecipe}/>
+            <Route path="/recipes" component={CreateRecipe}/>
+            <Route path="/popular/recipe" component={PopularPostList} />
           </div>
         </Router>
       )

@@ -14,17 +14,17 @@ class Header extends Component{
           <Navbar inverse collapseOnSelect>
             <Navbar.Header>
               <Navbar.Brand>
-                <Link to="/">Armentum React Js Blogs</Link>
+                <Link to="/">Recipe Menu For Times</Link>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav>
                 <NavItem eventKey={1}><Link to="/about">About Us</Link></NavItem>
-                <NavItem eventKey={1}><Link to="/blogs">Create Blog</Link></NavItem>
+                <NavItem eventKey={1}><Link to="/recipes">Add Recipe</Link></NavItem>
               </Nav>
               <Nav pullRight>
-                <NavItem eventKey={1} ><Link to="/popular/posts">Popular Posts</Link></NavItem>
+                <NavItem eventKey={1} ><Link to="/popular/recipe">Popular Recipe</Link></NavItem>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
